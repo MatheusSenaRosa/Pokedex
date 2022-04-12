@@ -1,10 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 import BackgroundImg from "../assets/img/background.png";
+import CalculatorFont from "../assets/fonts/Calculator.ttf";
 
 export const GlobalStyle = createGlobalStyle`
     @font-face {
         font-family: "Calculator";
-        src: url("/assets/fonts/Calculator.ttf");
+        src: url(${CalculatorFont});
     }
     
     *{
