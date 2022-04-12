@@ -3,9 +3,8 @@ import { IPokemon } from "../../shared/interfaces/pokemon";
 import * as S from "./styles";
 
 type Props = {
-  pokemonData: IPokemon | null;
+  pokemonData: IPokemon | null | undefined;
   loading: boolean;
-  error: boolean;
 };
 
 type PokemonVersion = {
@@ -13,7 +12,7 @@ type PokemonVersion = {
   shiny: boolean;
 };
 
-export const Pokedex = ({ pokemonData, loading, error }: Props) => {
+export const Pokedex = ({ pokemonData, loading }: Props) => {
   const [pokemonVersion, setPokemonVersion] = useState<PokemonVersion>({
     position: "front",
     shiny: false,
@@ -57,9 +56,10 @@ export const Pokedex = ({ pokemonData, loading, error }: Props) => {
   return (
     <S.Container>
       <S.PictureContainer>
-        {loading ? <p>Loading...</p> : <img src={imgHandler()} />}
-        {error && <p>Not found</p>}
-        {!pokemonData && !error && !loading ? <p>No data</p> : null}
+        {pokemonData && <img src={imgHandler()} alt="Pokemon" />}
+        {loading && !pokemonData ? <p>Loading...</p> : null}
+        {!loading && pokemonData === null ? <p>No data</p> : null}
+        {!loading && pokemonData === undefined ? <p>Not found</p> : null}
       </S.PictureContainer>
 
       {pokemonData && (

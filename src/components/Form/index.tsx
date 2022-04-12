@@ -6,32 +6,29 @@ import { getPokemon } from "../../shared/services/getPokemon";
 import * as S from "./styles";
 
 type Props = {
-  setPokemon: (data: IPokemon | null) => void;
+  setPokemon: (data: IPokemon | undefined) => void;
   setIsLoading: (value: boolean) => void;
-  setIsError: (value: boolean) => void;
 };
 
 type FormData = {
   pokemonName: string;
 };
 
-export const Form = ({ setPokemon, setIsLoading, setIsError }: Props) => {
-  const { register, handleSubmit } = useForm<FormData>();
+export const Form = ({ setPokemon, setIsLoading }: Props) => {
+  const { register, handleSubmit, resetField } = useForm<FormData>();
 
   const onSubmitHandler = handleSubmit(async ({ pokemonName }) => {
     setIsLoading(true);
-    setPokemon(null);
-    setIsError(false);
+    setPokemon(undefined);
 
-    const pokemonData = await getPokemon(pokemonName);
-
-    if (typeof pokemonData === "string") {
-      setIsError(true);
-    } else {
+    try {
+      const pokemonData = await getPokemon(pokemonName);
       setPokemon(pokemonData);
+      setIsLoading(false);
+      resetField("pokemonName");
+    } catch (err) {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
   });
 
   return (
