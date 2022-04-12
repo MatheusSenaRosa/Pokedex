@@ -20,13 +20,13 @@ export const Form = ({ setPokemon, setIsLoading, setIsError }: Props) => {
 
   const onSubmitHandler = handleSubmit(async ({ pokemonName }) => {
     setIsLoading(true);
+    setPokemon(null);
     setIsError(false);
 
     const pokemonData = await getPokemon(pokemonName);
 
     if (typeof pokemonData === "string") {
       setIsError(true);
-      setPokemon(null);
     } else {
       setPokemon(pokemonData);
     }
