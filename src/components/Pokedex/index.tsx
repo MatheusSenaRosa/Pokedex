@@ -45,17 +45,21 @@ export const Pokedex = ({ pokemonData, loading }: Props) => {
     if (pokemonVersion.position === "front") {
       switch (pokemonVersion.shiny) {
         case true:
-          return pokemonData?.sprites.front_shiny;
+          return pokemonData?.sprites.versions?.["generation-v"]["black-white"]
+            .animated?.front_shiny;
         default:
-          return pokemonData?.sprites.front_default;
+          return pokemonData?.sprites.versions?.["generation-v"]["black-white"]
+            .animated?.front_default;
       }
     }
 
     switch (pokemonVersion.shiny) {
       case true:
-        return pokemonData?.sprites.back_shiny;
+        return pokemonData?.sprites.versions?.["generation-v"]["black-white"]
+          .animated?.back_shiny;
       default:
-        return pokemonData?.sprites.back_default;
+        return pokemonData?.sprites.versions?.["generation-v"]["black-white"]
+          .animated?.back_default;
     }
   };
 

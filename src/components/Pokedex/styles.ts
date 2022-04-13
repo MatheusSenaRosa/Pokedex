@@ -26,7 +26,7 @@ export const PictureContainer = styled.div`
   width: 270px;
 
   position: absolute;
-  top: 220px;
+  top: 215px;
   left: 100px;
 
   display: flex;
@@ -34,7 +34,7 @@ export const PictureContainer = styled.div`
   justify-content: center;
 
   img {
-    height: 190px;
+    height: 130px;
   }
 
   p {
