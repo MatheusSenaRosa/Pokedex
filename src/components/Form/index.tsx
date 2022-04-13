@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { IoSearchSharp } from "react-icons/io5";
-import { IPokemon } from "../../shared/interfaces/pokemon";
+import { IPokemon } from "../../shared/interfaces/pokemonInterface";
 import { getPokemon } from "../../shared/services/getPokemon";
 
 import * as S from "./styles";

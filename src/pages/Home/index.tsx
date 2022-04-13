@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form, Pokedex } from "../../components";
-import { IPokemon } from "../../shared/interfaces/pokemon";
+import { IPokemon } from "../../shared/interfaces/pokemonInterface";
 
 import * as S from "./styles";
 

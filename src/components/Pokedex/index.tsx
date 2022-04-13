@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { IPokemon } from "../../shared/interfaces/pokemon";
+import { IPokemon } from "../../shared/interfaces/pokemonInterface";
+import {
+  formatName,
+  formatHeight,
+  formatWeight,
+} from "../../shared/formatPokemonData";
 import * as S from "./styles";
 
 type Props = {
@@ -77,17 +82,15 @@ export const Pokedex = ({ pokemonData, loading }: Props) => {
             <span onClick={shinyHandler} />
           </S.StickButtonContainer>
           <S.InfoPanel>
-            <h2>
-              {pokemonData.name[0].toUpperCase() + pokemonData.name.slice(1)}
-            </h2>
+            <h2>{formatName(pokemonData.name)}</h2>
             <div>
               <h4>
                 Height:
-                <span>{(pokemonData.height * 0.1).toFixed(2)} M</span>
+                <span>{formatHeight(pokemonData.height)}</span>
               </h4>
               <h4>
                 Weight:
-                <span>{Math.round(pokemonData.weight * 0.1)} KG</span>
+                <span>{formatWeight(pokemonData.weight)}</span>
               </h4>
               <h4>
                 Ability:
