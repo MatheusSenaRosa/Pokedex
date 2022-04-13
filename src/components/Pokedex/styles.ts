@@ -123,3 +123,21 @@ export const InfoPanel = styled.div`
     }
   }
 `;
+
+export const TypePanel = styled.div<{ right: string }>`
+  position: absolute;
+  width: 126px;
+  height: 45px;
+
+  right: ${({ right }) => right};
+  bottom: 105px;
+
+  font-size: 22px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

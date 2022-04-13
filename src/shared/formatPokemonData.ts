@@ -9,3 +9,7 @@ export const formatWeight = (weight: number): string => {
 export const formatHeight = (height: number): string => {
   return (height * 0.1).toFixed(2) + " M";
 };
+
+export const formatId = (id: number): string => {
+  return id > 9 ? String(id) : `0${id}`;
+};

@@ -4,6 +4,7 @@ import {
   formatName,
   formatHeight,
   formatWeight,
+  formatId,
 } from "../../shared/formatPokemonData";
 import * as S from "./styles";
 
@@ -69,9 +70,7 @@ export const Pokedex = ({ pokemonData, loading }: Props) => {
 
       {pokemonData && (
         <>
-          <S.PokemonId>
-            {pokemonData.id > 9 ? pokemonData?.id : `0${pokemonData?.id}`}
-          </S.PokemonId>
+          <S.PokemonId>{formatId(pokemonData.id)}</S.PokemonId>
 
           <S.StickButtonContainer>
             <span onClick={shinyHandler} />
@@ -98,6 +97,13 @@ export const Pokedex = ({ pokemonData, loading }: Props) => {
               </h4>
             </div>
           </S.InfoPanel>
+
+          <S.TypePanel right="244px">
+            {pokemonData.types[0].type.name}
+          </S.TypePanel>
+          <S.TypePanel right="94px">
+            {pokemonData.types.length === 2 && pokemonData.types[1].type.name}
+          </S.TypePanel>
         </>
       )}
     </S.Container>
